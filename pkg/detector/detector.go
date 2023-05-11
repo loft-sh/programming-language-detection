@@ -24,17 +24,17 @@ func (i *fileList) appendFile(input string) {
 }
 
 var supportedLanguages = map[string]*regexp.Regexp{
-	"JavaScript": regexp.MustCompile(`(.*?)\.js`),
-	"TypeScript": regexp.MustCompile(`(.*?)\.ts`),
-	"Python":     regexp.MustCompile(`(.*?)\.py`),
-	"C":          regexp.MustCompile(`(.*?)\.c`),
-	"Cpp":        regexp.MustCompile(`(.*?)\.cpp`),
-	"DotNet":     regexp.MustCompile(`(.*?)\.cs`),
-	"Go":         regexp.MustCompile(`(.*?)\.go`),
-	"PHP":        regexp.MustCompile(`(.*?)\.php`),
-	"Java":       regexp.MustCompile(`(.*?)\.java`),
-	"Rust":       regexp.MustCompile(`(.*?)\.rs`),
-	"Ruby":       regexp.MustCompile(`(.*?)\.rb`),
+	"JavaScript": regexp.MustCompile(`(.*?)\.js[ $]`),
+	"TypeScript": regexp.MustCompile(`(.*?)\.ts[ $]`),
+	"Python":     regexp.MustCompile(`(.*?)\.py[ $]`),
+	"C":          regexp.MustCompile(`(.*?)\.c[ $]`),
+	"Cpp":        regexp.MustCompile(`(.*?)\.cpp[ $]`),
+	"DotNet":     regexp.MustCompile(`(.*?)\.cs[ $]`),
+	"Go":         regexp.MustCompile(`(.*?)\.go[ $]`),
+	"PHP":        regexp.MustCompile(`(.*?)\.php[ $]`),
+	"Java":       regexp.MustCompile(`(.*?)\.java[ $]`),
+	"Rust":       regexp.MustCompile(`(.*?)\.rs[ $]`),
+	"Ruby":       regexp.MustCompile(`(.*?)\.rb[ $]`),
 }
 
 var vendorMatchers = []*regexp.Regexp{
@@ -291,6 +291,7 @@ func crawl(input string, wg *sync.WaitGroup) {
 // GetLanguage will return a guess of which language is the project in the input
 // path.
 // It will return None if it didn't match anything, else it will return one of:
+//
 //	"JavaScript"
 //	"TypeScript"
 //	"Python"

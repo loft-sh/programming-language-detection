@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	lang := detector.GetLanguage(os.Args[1], -1)
+	lang := detector.GetLanguage(os.Args[1], 5000)
 	println(lang)
 }
