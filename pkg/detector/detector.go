@@ -319,7 +319,7 @@ func GetLanguage(path string, limit int) string {
 	// Merge the results in a single line
 	// so we can do a simple matchall and count the
 	// matches
-	output := strings.Join(result.data[:], " ")
+	output := strings.Join(result.data[:], " ") + " "
 	lang := "None"
 	max := 0
 	for key, matcher := range supportedLanguages {
