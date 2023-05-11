@@ -217,7 +217,7 @@ func IsDotFile(input string) bool {
 }
 
 // IsDocumentation returns if the file or directory in input is documentation related.
-// This function will iter trough a series of regexes to infere if that is the case.
+// This function will iter through a series of regexes to infere if that is the case.
 func IsDocumentation(input string) bool {
 	for _, matcher := range documentationMatchers {
 		if matcher == nil {
@@ -231,7 +231,7 @@ func IsDocumentation(input string) bool {
 }
 
 // IsVendor returns if the file or directory in input is vendor related.
-// This function will iter trough a series of regexes to infere if that is the case.
+// This function will iter through a series of regexes to infere if that is the case.
 func IsVendor(input string) bool {
 	for _, matcher := range vendorMatchers {
 		if matcher == nil {
@@ -245,7 +245,7 @@ func IsVendor(input string) bool {
 }
 
 // crawl will recursively explore the filesystem starting from input.
-// it will parallely explore each directory, stopping when either all files are
+// it will parallelly explore each directory, stopping when either all files are
 // explored or when we reach a globalLimit of file explored.
 func crawl(input string, wg *sync.WaitGroup) {
 	defer wg.Done()
@@ -271,7 +271,7 @@ func crawl(input string, wg *sync.WaitGroup) {
 			continue
 		} else if file.IsDir() {
 			// in case of dirs, we spawn a new routine to start exploring
-			// parallely
+			// parallelly
 			wg.Add(1)
 			go crawl(input+"/"+file.Name(), wg)
 		} else {
@@ -316,7 +316,7 @@ func GetLanguage(path string, limit int) string {
 	wg.Wait()
 
 	// Merge the results in a single line
-	// so we can do a simple matchall and cound the
+	// so we can do a simple matchall and count the
 	// matches
 	output := strings.Join(result.data[:], " ")
 	lang := "None"
