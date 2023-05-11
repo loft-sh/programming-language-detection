@@ -1,0 +1,5 @@
+.vscode
+programming-language-detection
+build
+*.vim
+*.swp
